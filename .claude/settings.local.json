@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(gh *)",
+      "PowerShell(winget install *)",
+      "PowerShell(choco *)",
+      "PowerShell(scoop *)",
+      "PowerShell(Test-NetConnection *)",
+      "PowerShell($url = \"https://github.com/git-for-windows/git/releases/download/v2.54.0.windows.1/Git-2.54.0-64-bit.exe\"; $out = \"$env:TEMP\\\\Git-Installer.exe\"; Invoke-WebRequest -Uri $url -OutFile $out -UseBasicParsing; if \\(Test-Path $out\\) { \"Downloaded: $\\(\\(Get-Item $out\\).Length\\) bytes\" } else { \"Failed\" })",
+      "PowerShell($url = \"https://github.com/cli/cli/releases/download/v2.95.0/gh_2.95.0_windows_amd64.msi\"; $out = \"$env:TEMP\\\\gh-Installer.msi\"; Invoke-WebRequest -Uri $url -OutFile $out -UseBasicParsing; if \\(Test-Path $out\\) { \"Downloaded: $\\(\\(Get-Item $out\\).Length\\) bytes\" } else { \"Failed\" })",
+      "PowerShell(Test-Path *)",
+      "PowerShell(Start-Process -FilePath \"$env:TEMP\\\\Git-Installer.exe\" -ArgumentList \"/VERYSILENT /NORESTART /NOCANCEL /DIR=`\"C:\\\\Program Files\\\\Git`\"\" -Wait -NoNewWindow; \"Exit code: $LASTEXITCODE\")",
+      "PowerShell(Start-Process msiexec.exe -ArgumentList \"/i `\"$env:TEMP\\\\gh-Installer.msi`\" /quiet /norestart\" -Wait -NoNewWindow; \"Exit code: $LASTEXITCODE\")",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); & \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\" --version; & \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\" --version 2>&1 | Select-Object -First 1)",
+      "PowerShell($ghPaths = @\\(\"${env:ProgramFiles}\\\\GitHub CLI\\\\gh.exe\", \"${env:LOCALAPPDATA}\\\\Programs\\\\GitHub CLI\\\\gh.exe\", \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\"\\); foreach \\($p in $ghPaths\\) { if \\(Test-Path $p\\) { & $p --version; break } })",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(winget list *)",
+      "PowerShell(New-Item *)",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\" config --global user.name \"GHGYT12138\"; & \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\" config --global user.email \"1697475078@qq.com\"; \"Done\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\" init \"D:\\\\Program Files \\(x86\\)\\\\cursor\\\\project\\\\first-cc\")",
+      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"D:\\\\Program Files \\(x86\\)\\\\cursor\\\\project\\\\first-cc\"; & $git add -A; & $git commit -m \"Initial commit\")"
+    ]
+  }
+}
